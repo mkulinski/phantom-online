@@ -9,10 +9,13 @@ userController.getAllUsers = (next) => {
 userController.checkLogin = (req, res, next) => {
   authenticate(req.body.username, req.body.password, (err, user) => {
     if (user) {
-      username = user.username;
+      // username = user.username;
       next();
-    } else {
-      res.redirect('/login');
+    }
+    else {
+      return res.status(401).json({
+        err,
+      });
     }
   });
 };

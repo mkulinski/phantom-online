@@ -3,6 +3,7 @@ const app = angular
     'ngRoute',
     'My.LoginController',
     'My.SignupController',
+    'My.TakeApicController',
   ]);
 
 app.config(configFunction);
@@ -16,6 +17,7 @@ function configFunction($routeProvider, $locationProvider) {
       controller: 'LoginController',
     }).when('/take-a-pic', {
       templateUrl: './partials/take-a-pic.html',
+      controller: 'TakeApicController',
     }).when('/signup', {
       templateUrl: './partials/signup.html',
       controller: 'SignupController',

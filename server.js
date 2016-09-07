@@ -12,8 +12,7 @@ const app = express();
 const mongoURI = 'mongodb://localhost:27017/lrn_express';
 mongoose.connect(mongoURI);
 
-let counter = 5;
-username = '';
+let counter = 0;
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -32,51 +31,59 @@ app.get('/', (req, res) => {
 //   res.sendFile(__dirname + '/client/take-a-pic.html');
 // });
 
-app.get('/style.css', (req, res) => {
-  res.sendFile(__dirname + '/client/style.css');
-});
+// app.get('/style.css', (req, res) => {
+//   res.sendFile(__dirname + '/client/style.css');
+// });
 
-app.get('/signup', (req, res) => {
-  res.sendFile(__dirname + '/client/signup.html');
-});
+// app.get('/signup', (req, res) => {
+//   res.sendFile(__dirname + '/client/signup.html');
+// });
 
 // app.get('/login', (req, res) => {
 //   res.sendFile(__dirname + '/client/login.html');
 // });
 
-app.get('/profile', (req, res) => {
-  res.sendFile(__dirname + '/client/profile.html');
-});
-
-app.get('/pictures', (req, res) => {
-  res.sendFile(__dirname + '/client/pictures.html');
-});
+// app.get('/profile', (req, res) => {
+//   res.sendFile(__dirname + '/client/profile.html');
+// });
+//
+// app.get('/pictures', (req, res) => {
+//   res.sendFile(__dirname + '/client/pictures.html');
+// });
 
 app.post('/signup',
   userController.createUser,
   (req, res) => {
-    res.redirect('#/take-a-pic');
+    res.status(200).json({
+      status: 'Login successful!',
+    });
   }
 );
 
-app.post('/logins',
+app.post('/login',
   userController.checkLogin,
   (req, res) => {
-    res.redirect('/take-pic');
+    res.status(200).json({
+      status: 'Login successful!',
+    });
   }
 );
 
 app.post('/image', (req, res) => {
-  if (username !== '') {
+  if (req.body.username) {
     const img = req.body.imgBase64;
     const data = img.replace(/^data:image\/\w+;base64,/, '');
     const buf = new Buffer(data, 'base64');
     const imageName = `images/${username}-${counter}.png`;
     fs.writeFile(imageName, buf);
     counter++;
-    res.sendStatus(200);
+    res.status(200).json({
+      status: 'Image Saved!',
+    });
   } else {
-    res.redirect('/login');
+    return res.status(401).json({
+      err: 'err',
+    });
   }
 });
 

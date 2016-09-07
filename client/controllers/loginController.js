@@ -1,15 +1,21 @@
 angular
-  .module('My.LoginController', ['ngRoute'])
-  .controller('LoginController', ['$scope', '$http', '$location', LoginController]);
+  .module('My.LoginController', ['ngRoute', 'My.UserFactory'])
+  .controller('LoginController', ['$scope', 'UserFactory', '$http', '$location', LoginController]);
 
 // $location instead of window location
-function LoginController($scope, $http, $location) {
-  $scope.formData = { username: '', password: '' };
+function LoginController($scope, UserFactory, $http, $location) {
+  $scope.username = UserFactory.username;
+  $scope.password = UserFactory.password;
 
   $scope.processForm = function () {
-    $http.post('/login', JSON.stringify($scope.formData))
-      .success(function (loginDetails) {
-        console.log(loginDetails);
+    $http.post('/login', JSON.stringify({ username: $scope.username, password: $scope.password }))
+      .success(function (response) {
+        console.log(response);
+        if (response.status === 'Login successful!') {
+          $location.path('/take-a-pic');
+        } else {
+          $location.path('/login');
+        }
 
         // if (!loginDetails.success) {
         //   // if not successful, bind errors to error variables
@@ -26,7 +32,6 @@ function LoginController($scope, $http, $location) {
         //
         //   $scope.message = data.message;
         // }
-        $location.path('/take-a-pic');
       });
   };
 }
