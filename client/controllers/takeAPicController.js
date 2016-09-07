@@ -1,8 +1,8 @@
 angular
-  .module('My.TakeApicController', ['ngRoute'])
-  .controller('TakeApicController', ['$scope', '$http', '$location', '$injector', TakeApicController]);
+  .module('My.TakeApicController', ['ngRoute', 'My.UserFactory'])
+  .controller('TakeApicController', ['$scope', 'UserFactory', '$http', '$location', TakeApicController]);
 
-function TakeApicController($scope, $http, $location, $injector) {
+function TakeApicController($scope, UserFactory, $http, $location) {
   const previewImage = document.getElementById('previewImage');
   const video = document.querySelector('#videoElement');
   const captureButton = document.getElementById('capture');

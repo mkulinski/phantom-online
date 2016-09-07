@@ -9,10 +9,8 @@ userController.getAllUsers = (next) => {
 userController.checkLogin = (req, res, next) => {
   authenticate(req.body.username, req.body.password, (err, user) => {
     if (user) {
-      // username = user.username;
       next();
-    }
-    else {
+    } else {
       return res.status(401).json({
         err,
       });
@@ -32,9 +30,10 @@ userController.restrict = (req, res, next) => {
 userController.createUser = (req, res, next) => {
   User.create(new User(req.body), (err, result) => {
     if (err) {
-      res.render(err);
+      return res.status(401).json({
+        err,
+      });
     }
-    // username = result.username;
     next();
   });
 };

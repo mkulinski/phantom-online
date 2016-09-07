@@ -21,41 +21,17 @@ app.use(bodyParser.urlencoded({
 app.use(cookieParser());
 
 app.use(express.static(path.join(__dirname, '/client')));
+app.use(express.static(path.join(__dirname, '/')));
 
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/client/ang-index.html');
 });
 
-// route with restrict middleware
-// app.get('/take-pic', (req, res) => {
-//   res.sendFile(__dirname + '/client/take-a-pic.html');
-// });
-
-// app.get('/style.css', (req, res) => {
-//   res.sendFile(__dirname + '/client/style.css');
-// });
-
-// app.get('/signup', (req, res) => {
-//   res.sendFile(__dirname + '/client/signup.html');
-// });
-
-// app.get('/login', (req, res) => {
-//   res.sendFile(__dirname + '/client/login.html');
-// });
-
-// app.get('/profile', (req, res) => {
-//   res.sendFile(__dirname + '/client/profile.html');
-// });
-//
-// app.get('/pictures', (req, res) => {
-//   res.sendFile(__dirname + '/client/pictures.html');
-// });
-
 app.post('/signup',
   userController.createUser,
   (req, res) => {
     res.status(200).json({
-      status: 'Login successful!',
+      status: 'Signup successful!',
     });
   }
 );
@@ -71,10 +47,10 @@ app.post('/login',
 
 app.post('/image', (req, res) => {
   if (req.body.username) {
-    const img = req.body.imgBase64;
-    const data = img.replace(/^data:image\/\w+;base64,/, '');
-    const buf = new Buffer(data, 'base64');
-    const imageName = `images/${username}-${counter}.png`;
+    let img = req.body.imgBase64;
+    let data = img.replace(/^data:image\/\w+;base64,/, '');
+    let buf = new Buffer(data, 'base64');
+    let imageName = `images/${req.body.username}-${counter}.png`;
     fs.writeFile(imageName, buf);
     counter++;
     res.status(200).json({

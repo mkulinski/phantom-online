@@ -119,7 +119,7 @@ fieldset {
 
 /* main container */
 .login {
-	margin: 100px auto 0;
+	margin: 0 auto;
 	height: 740px;
   max-width: 935px;
   width: 100%;
@@ -168,6 +168,7 @@ fieldset {
   width: 100%;
 }
 #sign-in-error {
+  text-align: center;
 	color: #FF0000;
 }
 /* sign up section */
@@ -209,14 +210,24 @@ footer li {
 }
 
 /*Video Page */
+.take-pic {
+  margin-top: 50px;
+}
 #container {
     margin: 0px auto;
-    width: 500px;
-    height: 375px;
-    border: 10px #333 solid;
+    width: 600px;
+    height: 450px;
+    border: 10px #444 solid;
 }
 #videoElement {
-    width: 500px;
-    height: 375px;
-    background-color: #666;
+    width: 600px;
+    height: 450px;
+}
+.cap-button {
+  margin: 0 auto;
+  width: 500px;
+}
+#capture {
+  margin-top: 20px;
+  font-size: 14px;
 }

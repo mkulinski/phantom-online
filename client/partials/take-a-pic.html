@@ -1,9 +1,12 @@
-<div>
-  <h3>Take A Picture!</h3>
-  <hr />
+<div class="take-pic">
+  <div class="cap-button">
   <div id="container">
     <video id="videoElement" autoplay="true"></video>
   </div>
-  <button id="capture" ng-click="captureImage()">capture</button>
+    <button id="capture" class="login-button" ng-click="captureImage()">capture</button>
+  </div>
+  <div>
+    <a ng-href="#/pictures">See Your Pictures</a>
+  </div>
   <div id="image" class="image"><img id="previewImage" /></div>
 </div>
