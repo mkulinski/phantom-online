@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My angularized app</title>
+
+  <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+  <script type="text/javascript" src="./lib/angular/angular.min.js"></script>
+  <script type="text/javascript" src="./lib/angular-route/angular-route.min.js"></script>
+  <script type="text/javascript" src="./controllers/loginController.js"></script>
+  <script type="text/javascript" src="./controllers/signupController.js"></script>
+  <script type="text/javascript" src="./app.js"></script>
+
+  <link rel='shortcut icon' href='/img/ghosty-small.png' type='image/x-icon'/ >
+  <link rel="stylesheet" href="style.css">
+</head>
+<body ng-app='myApp'>
+  <!--Notice the link with the octothorpe first-->
+  <!--Our templates are rendered here-->
+  <header>
+      <div class="nav">
+        <ul>
+          <li><a ng-href="#/" class="active">Home</a></li>
+          <li><a ng-href="#/login">LOGIN</a></li>
+          <li><a ng-href="#/signup">SIGNUP</a></li>
+        </ul>
+      </div>
+    </header>
+  <div class="container" ng-view></div>
+
+</body>
+</html>

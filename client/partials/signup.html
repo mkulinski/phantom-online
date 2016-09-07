@@ -1,0 +1,21 @@
+<section class="login clearfix">
+  <img src="img/ghosty-large.png" alt="iphone images" class="ghost-img">
+
+  <div class="right-side-login">
+    <div class="form-container">
+      <h2 class="text-center">Sign Up<span class="large-ex">.</span></h2>
+      <form id="contact" ng-submit="processForm()">
+        <fieldset>
+          <input id="username" class="input-box" type="text" placeholder="Username" name="username" ng-model="formData.username">
+        </fieldset>
+        <fieldset>
+          <input id="password" class="input-box" type="password" placeholder="Password" name="password" ng-model="formData.password">
+        </fieldset>
+        <fieldset>
+          <button id="login-submit" class="login-button" name="submit" type="submit">Log in</button>
+        </fieldset>
+      </form>
+      <p id="sign-in-error" ng-show="message">{{ message }}</p>
+    </div>
+  </div>
+</section>

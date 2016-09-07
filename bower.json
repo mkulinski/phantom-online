@@ -1,0 +1,27 @@
+{
+  "name": "lrn-express",
+  "description": "learning express",
+  "authors": [
+    "Michael Kulinski"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "just",
+    "learning",
+    "some",
+    "express"
+  ],
+  "homepage": "https://github.com/mkulinski/mongo-form-test",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "./client/lib",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angular-route": "^1.5.8"
+  }
+}

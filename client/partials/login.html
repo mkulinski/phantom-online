@@ -1,0 +1,31 @@
+<!-- <form action="/login" method="POST">
+  <input type="email" placeholder="Email" name="email">
+  <input type="text" placeholder="Username" name="username">
+  <input type="password" placeholder="Password" name="password">
+  <button type="submit">Submit</button>
+</form> -->
+
+<section class="login clearfix">
+  <img src="img/ghosty-large.png" alt="iphone images" class="ghost-img">
+
+  <div class="right-side-login">
+    <div class="form-container">
+      <h2 class="text-center">Phantom Online<span class="large-ex">.</span></h2>
+      <form id="contact" ng-submit="processForm()">
+        <fieldset>
+          <input id="username" class="input-box" type="text" placeholder="Username" name="username" ng-model="formData.name">
+        </fieldset>
+        <fieldset>
+          <input id="password" class="input-box" type="password" placeholder="Password" name="password" ng-model="formData.password">
+        </fieldset>
+        <fieldset>
+          <button id="login-submit" class="login-button" name="submit" type="submit">Log in</button>
+        </fieldset>
+      </form>
+      <p id="sign-in-error" ng-show="message">{{ message }}</p>
+    </div>
+    <div class="sign-up">
+      <p>Don't have an account? <a ng-href="#/signup">Sign up</a></p>
+    </div>
+  </div>
+</section>
