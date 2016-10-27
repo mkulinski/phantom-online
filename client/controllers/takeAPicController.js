@@ -8,8 +8,8 @@ function TakeApicController($scope, UserFactory, $http, $location) {
   const captureButton = document.getElementById('capture');
 
   const canvas = document.createElement('canvas');
-  canvas.width = 100; // set to current video width
-  canvas.height = 100; // set to current video height
+  canvas.width = 214; // set to current video width
+  canvas.height = 160; // set to current video height
   const ctx = canvas.getContext('2d');
 
   navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
@@ -32,7 +32,7 @@ function TakeApicController($scope, UserFactory, $http, $location) {
     // convert to desired file format
     const dataURL = canvas.toDataURL('image/jpeg'); // can also use 'image/png'
     const baseURL = canvas.toDataURL();
-    previewImage.src = dataURL;
+    // previewImage.src = dataURL;
 
     $.ajax({
       type: 'POST',
