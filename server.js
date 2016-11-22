@@ -24,7 +24,7 @@ app.use(express.static(path.join(__dirname, '/client')));
 app.use(express.static(path.join(__dirname, '/')));
 
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/client/ang-index.html');
+  res.sendFile(path.join(__dirname, '/client/ang-index.html'));
 });
 
 app.post('/signup',
